@@ -1,0 +1,23 @@
+@mixin row() {
+  zoom:1;
+  &:before, &:after {
+      content: "\0020";
+      display: block;
+      height: 0;
+      overflow: hidden;
+  }
+  &:after {
+      clear: both;
+  }
+}
+
+@mixin col($size:.25) {
+  float: left;
+  width: percentage($size);
+  &:nth-child(1n) {
+    clear: none;
+  }
+  &:nth-child(#{1/$size}n+1) {
+    clear: left;
+  }
+}
